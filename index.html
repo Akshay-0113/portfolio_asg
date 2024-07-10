@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--for fab icons-->
+    <title>My Portfolio Website</title>
+    <!--for bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+
+        body{
+            background-color: #E7F5EB;
+        }
+
+        .navb{
+            background-color: #42868f;
+        }
+
+        .nav-link{
+            color: white;
+            border-radius: 10px;
+            background-position: center;
+            transition: background 0.8s;
+        }
+
+        .nav-link:hover{
+            background: #569ea7 radial-gradient(circle, transparent 1%, #569ea7 1%) center/15000%;
+        }
+
+        .nav-link:active{
+            background-color: #cdf0f6;
+            background-size: 100%;
+            transition: background 0s;
+            transform: scale(0.95);
+        }
+
+        @keyframes anim1 {
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+
+        #intro {
+            margin-top: 20px;
+            padding: 50px;
+            color: black;
+            text-align: center;
+            background-image: url('bg3.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .intro-text{
+            animation-name: anim1;
+            animation-duration: 2s;
+        }
+
+        #projects, #technologies, #education, #achievements {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-around;
+            align-content: space-around;
+            padding: 20px;
+            border-radius: 10px;
+            flex-direction: row;
+            gap: 20px;
+        }
+        .flex-item {
+            width: 30%;
+            background-color: #d9ecf3;
+            font-size: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #C2D1C1;
+        }
+        .flex-item:hover{
+            transform: translateY(-5px);
+            transition-timing-function: ease-in;
+            box-shadow: 0 0 15px #8DC5A2;
+        }
+
+        .flex-item3 {
+            width: 40%;
+            background-color: #d9ecf3;
+            font-size: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 5px #C2D1C1;
+        }
+
+        .flex-img{
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .link{
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .desc {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        @media (max-width: 992px) {
+            .flex-container {
+                flex-direction: column;
+            }
+            .flex-item, .flex-item3 {
+                width: 100%;
+            }
+            .nav-link:active{
+                transform: scale(0.99);
+            }
+            .reveal3{
+                position: relative;
+                transform: translateY(100px);
+                opacity: 0;
+                transition: 1s all ease;
+            }
+
+            .reveal3.active{
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        footer{
+            background-color: #a8e3eb;
+            padding: 20px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .fa {
+            width: 3vw;
+            height: 3vw;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-decoration: none;
+            margin: 5px 2px;
+            border-radius: 50%;
+            transition: all 1s;
+            color:white;
+        }
+
+        .fa:hover {
+            transform: rotateY(360deg);
+        }
+
+        .fa-facebook {
+            background: #3B5998;
+        }
+
+        .fa-google {
+            background: #4285F4;
+        }
+        .fa-linkedin {
+            background: #0082ca;
+        }
+
+        .fa-instagram {
+            background: #ac2bac;
+        }
+        .fa-github{
+            background: #333;
+        }
+
+        .disc {
+            font-size: 10px;
+            color: #6c757d;
+        }
+
+        .horizontal-timeline .items {
+            border-top: 3px solid #e9ecef;
+        }
+
+        .horizontal-timeline .items .items-list {
+            display: block;
+            position: relative;
+            text-align: center;
+            padding-top: 70px;
+            margin-right: 0;
+        }
+
+        .horizontal-timeline .items .items-list:before {
+            content: "";
+            position: absolute;
+            height: 36px;
+            border-right: 2px dashed #dee2e6;
+            top: 0;
+        }
+
+        .horizontal-timeline .items .items-list .event-date {
+            position: absolute;
+            top: 36px;
+            left: 0;
+            right: 0;
+            width: 75px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+            padding-top: 8px;
+        }
+
+        @media (min-width: 1200px) {
+            .horizontal-timeline .items .items-list {
+                display: inline-block;
+                width: 24%;
+                padding-top: 45px;
+            }
+
+            .horizontal-timeline .items .items-list .event-date {
+                top: -45px;
+            }
+        }
+
+        .reveal{
+            position: relative;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+
+        .reveal.active{
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .reveal2{
+            animation: anim1 2s;
+        }
+
+    </style>
+
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal, .reveal3");
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+                } else {
+                reveals[i].classList.remove("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+
+    </script>
+    
+    <nav class="navbar navbar-expand-lg fixed-top navb">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">Home</a>
+              </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">Projects</a>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#technologies">Technologies</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#education">Education</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#achievements">Achievements</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div id="intro">
+        <div class="intro-text">
+            Hello Visitor!<br>
+            Welcome to my website<br>
+            I am Akshay Mondal, a software engineer at BizAcuity<br>
+            Explore my portfolio to see how I've used my technical and problem solving skills to solve real-world problems
+        </div>
+    </div>
+
+      <div id="projects" class="reveal2">
+        <h2>Projects</h2>
+        <div class="flex-container">
+            <div class="flex-item reveal2">
+                PicPhrase
+                <img src="imgcaption.png" class="flex-img"/> 
+                <div class="desc">
+                    Built a robust web application for generating image captions using a CNN-RNN model and enhanced it using LLM
+                </div>
+                <a href="https://colab.research.google.com/drive/1x4JfV8IBm9rqWOZHJM5hQEH1vP1i0IOo" class="link">View Code</a>
+            </div>
+            <div class="flex-item reveal3">
+                PaperChat
+                <img src="socapp.png" class="flex-img"/>
+                <div class="desc">
+                    Developed a social media platform for sharing text posts with friends and family
+                </div>
+                <a href="https://github.com/Akshay-0113/Social-Media-App" class="link">View Code</a>
+            </div>
+            <div class="flex-item reveal3">
+                MovieMatch
+                <img src="mrs.png" class="flex-img"/>
+                <div class="desc">
+                    Created a movie recommendation system using collaborative filtering and content-based filtering
+                </div>
+                <a href="https://colab.research.google.com/drive/1jXZmE8pZe1Tm01j9YIZRCOadWTe3ml8Y" class="link">View Code</a>
+            </div>
+        </div>
+        </div>
+        <div id="technologies" class="reveal">
+            <h2>Technologies</h2>
+            <div class="flex-container">
+                <div class="flex-item reveal3" style="order:1">
+                    Front-end Development
+                    <img src="frontend.jpg" class="flex-img"/>
+                    <div class="desc">
+                        Experienced with HTML, CSS, and JavaScript in Front-end Development
+                    </div>
+                </div>
+                <div class="flex-item reveal3" style="order:4">
+                    C/C++/Python
+                    <img src="cpp.jpg" class="flex-img"/>
+                    <div class="desc">
+                        Familier with programming languages like C, C++, and Python
+                    </div>
+                </div>
+                <div class="flex-item reveal3" style="order:3">
+                    Data Structures and Algorithms
+                    <img src="dsa.png" class="flex-img"/>
+                    <div class="desc">
+                        Familier with data structures and common algorithms involving dynamic programming, greedy algorithms, graphs, etc
+                    </div>
+                </div>
+                <div class="flex-item reveal3" style="order:2">
+                    Machine Learning/Deep Learning
+                    <img src="ai.jpg" class="flex-img"/>
+                    <div class="desc">
+                        Experienced with machine learning/deep learning algorithms and their applications in real world problems
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="education" class="reveal">
+            <h2>Education</h2>
+            <br>
+            <div class="container-fluid py-5">
+
+                <div class="row">
+                  <div class="col-lg-12">
+              
+                    <div class="horizontal-timeline">
+              
+                      <ul class="list-inline items">
+                        <li class="list-inline-item items-list reveal3">
+                          <div class="px-4">
+                            <div class="event-date badge bg-info">2024</div>
+                            <h5 class="pt-2">IIT Kharagpur</h5>
+                            <p class="text-muted">B.Tech in Mechanical Engineering and Minor in Computer Science and Engineering with 8.1 CGPA</p>
+                          </div>
+                        </li>
+                        <li class="list-inline-item items-list reveal3">
+                          <div class="px-4">
+                            <div class="event-date badge bg-success">2020</div>
+                            <h5 class="pt-2">Higher Secondary</h5>
+                            <p class="text-muted">Completed Higher Secondary Education from DAV Model School Durgapur with 92% in AISSCE</p>
+                          </div>
+                        </li>
+                        <li class="list-inline-item items-list reveal3">
+                          <div class="px-4">
+                            <div class="event-date badge bg-danger">2018</div>
+                            <h5 class="pt-2">Secondary</h5>
+                            <p class="text-muted">Completed Secondary Education from Pranavananda Vidyamandir Durgapur with 94% in CISCE</p>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              
+              </div>
+        </div>
+        <div id="achievements" class="reveal">
+            <h2>Achievements</h2>
+            <div class="flex-container">
+                <div class="flex-item3 reveal3">
+                    <div class="desc">
+                        Awarded Department Change in first year being among the top 10% in IIT Kharagpur 
+                    </div>
+                </div>
+                <div class="flex-item3 reveal3">
+                    <div class="desc">
+                        Secured AIR 5162 in JEE Advanced 2020 (top 3% among 1.5 lakh students in India)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer id="contact">
+            <a href="mailto:akshay.mondal@bizacuity.com" target="_blank" class="fa fa-google"></a>
+            <a href="https://www.linkedin.com/in/akshay-mondal-a64b58210/" target="_blank" class="fa fa-linkedin"></a>
+            <a href="https://github.com/Akshay-0113" target="_blank" class="fa fa-github"></a>
+            <a href="https://www.facebook.com/profile.php?id=100058548642355" target="_blank" class="fa fa-facebook"></a>
+            <a href="https://www.instagram.com/akshay_0113/" target="_blank" class="fa fa-instagram"></a>
+            <p style="font-size:14px">Designed by Akshay Mondal</p>
+            <div class="disc">
+                Disclaimer: Images used on this website are sourced from the internet for demonstration purposes only; all rights belong to their respective owners.
+            </div>
+        </footer>
+
+  </body>
+</html>
